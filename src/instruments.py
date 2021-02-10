@@ -172,8 +172,7 @@ class SwaptionGen (du.TimeSeriesData):
         orig_params - optimized parameters starting from default parameters
         HistParams - optimized parameters starting from yesterday's params
     '''
-    def __init__(self, index, model_dict, 
-                 error_type=ql.CalibrationHelper.ImpliedVolError, **kwargs):
+    def __init__(self, index, model_dict, error_type=ql.BlackCalibrationHelper.ImpliedVolError, **kwargs):
         self._model_dict = model_dict
         if not 'model' in self._model_dict \
         or not 'engine' in self._model_dict \
@@ -411,7 +410,7 @@ class SwaptionGen (du.TimeSeriesData):
             clean = False
             start = args[0]
             if args[1] > 0:
-                end = args[1]                
+                end = args[1]
 
         prev_params = self._default_params
         nb_params = len(prev_params)

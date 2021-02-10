@@ -14,7 +14,7 @@ from matplotlib.ticker import FuncFormatter, MaxNLocator
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 from sklearn.pipeline import Pipeline
-from sklearn.externals import joblib
+import joblib
 
 data_dir = '../data/'
 h5file = data_dir + 'data.h5'
@@ -116,7 +116,7 @@ class TimeSeriesData(object):
         return self.__getimpl(date)
 
     def __getimpl(self, date):
-        data = self._data.loc[date].as_matrix()
+        data = self._data.loc[date].to_numpy()
         data.shape = self._axis_shape
         return data
     
